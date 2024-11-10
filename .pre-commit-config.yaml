@@ -33,9 +33,9 @@ repos:
   - id: poetry-check
   - id: poetry-lock
   - id: poetry-export
-    args: ["--format", "requirements.txt", "--output", "pythonpc/requirements.txt", "--without-hashes", "--without-urls"]
+    args: ["--format", "requirements.txt", "--output", "numpy-pydantic-types/requirements.txt", "--without-hashes", "--without-urls"]
   - id: poetry-export
-    args: ["--with", "dev", "--with", "test", "--format", "requirements.txt", "--output", "pythonpc/requirements-dev.txt", "--without-hashes", "--without-urls"]
+    args: ["--with", "dev", "--with", "typecheck", "--with", "format", "--format", "requirements.txt", "--output", "numpy-pydantic-types/requirements-dev.txt", "--without-hashes", "--without-urls"]
   - id: poetry-install
 - repo: https://github.com/pre-commit/mirrors-mypy
   rev: v1.11.1
