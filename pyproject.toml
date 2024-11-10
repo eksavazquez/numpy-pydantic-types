@@ -1,0 +1,64 @@
+[tool.poetry]
+name = "numpy_pydantic_types"
+version = "0.1.0a0"
+description = "numpy-pydantic-types is a Python library providing numpy scalar data types compatible with pydantic, allowing for easy validation and enforcement of numerical precision in pydantic models."
+authors = ["Álvaro Vázquez Ortiz <alvvazort@gmail.com>"]
+maintainers = ["Álvaro Vázquez Ortiz <alvvazort@gmail.com>"]
+readme = "README.md"
+homepage = "https://github.com/eksavazquez/numpy-pydantic-types"
+license = "MIT"
+
+keywords = ["pydantic", "numpy", "typing", "validation"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Operating System :: OS Independent"
+]
+
+packages = [{include = "numpy_pydantic_types"}]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.13"
+
+numpy = ">=2.0.0"
+pydantic = "^2.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+coverage = "^7.5.1"
+
+[tool.poetry.group.format.dependencies]
+ruff = "*"
+
+[tool.poetry.group.typecheck.dependencies]
+mypy = "*"
+pyright = "^1.1.338"
+
+[tool.pytest.ini_options]
+filterwarnings = [
+    "ignore:invalid value encountered in multiply:RuntimeWarning",
+]
+
+[tool.black]
+line-length = 120
+target-version = ["py312"]
+
+[tool.isort]
+profile = "black"
+
+[tool.ruff]
+line-length = 120
+lint.ignore-init-module-imports = true
+lint.ignore = ["F403", "F405"]
+
+[tool.pyright]
+include = ["numpy_pydantic_types/**", "tests/**"]
+reportUnsupportedDunderAll = false
+
+[tool.mypy]
+ignore_missing_imports = true
+packages = ["numpy_pydantic_types"]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
