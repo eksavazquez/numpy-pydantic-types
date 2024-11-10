@@ -1,0 +1,45 @@
+default_install_hook_types: [pre-commit, commit-msg, post-merge, post-checkout]
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.6.0
+  hooks:
+  - id: check-case-conflict
+  - id: check-json
+  - id: check-shebang-scripts-are-executable
+  - id: check-toml
+  - id: check-xml
+  - id: check-yaml
+  - id: end-of-file-fixer
+  - id: mixed-line-ending
+    args: ["--fix=lf"]
+  - id: no-commit-to-branch
+    args: ["--branch", "main", "--branch", "develop"]
+  - id: trailing-whitespace
+- repo: https://github.com/astral-sh/ruff-pre-commit
+  rev: v0.5.7
+  hooks:
+  - id: ruff
+    args: ["--fix", "--exit-non-zero-on-fix"]
+  - id: ruff-format
+- repo: https://github.com/commitizen-tools/commitizen
+  rev: v3.28.0
+  hooks:
+  - id: commitizen
+    stages:
+    - commit-msg
+- repo: https://github.com/python-poetry/poetry
+  rev: 1.8.0
+  hooks:
+  - id: poetry-check
+  - id: poetry-lock
+  - id: poetry-export
+    args: ["--format", "requirements.txt", "--output", "pythonpc/requirements.txt", "--without-hashes", "--without-urls"]
+  - id: poetry-export
+    args: ["--with", "dev", "--with", "test", "--format", "requirements.txt", "--output", "pythonpc/requirements-dev.txt", "--without-hashes", "--without-urls"]
+  - id: poetry-install
+- repo: https://github.com/pre-commit/mirrors-mypy
+  rev: v1.11.1
+  hooks:
+  - id: mypy # --explicit-package-bases needed because package utils already exists but no problem because this is pythonpc.utils
+    args: ["--strict", "--ignore-missing-imports", "--explicit-package-bases"]
+    additional_dependencies: ["pydantic", "pydantic-settings", "types-paramiko", "pytest"]
