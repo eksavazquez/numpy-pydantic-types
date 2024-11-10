@@ -10,7 +10,7 @@
 - **Simple Integration**: Easily import and use `numpy` types in your `pydantic` models.
 ## Installation
 ```
-pip install numpy-pydantic-types
+pip install numpy_pydantic_types
 ```
 
 # Usage
