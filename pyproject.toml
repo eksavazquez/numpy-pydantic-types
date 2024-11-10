@@ -58,6 +58,9 @@ reportUnsupportedDunderAll = false
 [tool.mypy]
 ignore_missing_imports = true
 packages = ["numpy_pydantic_types"]
+plugins = [
+  'numpy.typing.mypy_plugin',
+]
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

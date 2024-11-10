@@ -26,7 +26,7 @@ class NumpyFloat(NumpyType[F]):
         # Define how it should look in the JSON schema
         return {
             "type": "number",
-            "format": "NumpyFloat",
+            "format": f"{cls.__name__}",
         }
 
     @classmethod
@@ -52,5 +52,5 @@ class NumpyFloat(NumpyType[F]):
         return cls(F(v))  # type: ignore
 
 
-class float32(NumpyFloat[np_float32]):
+class float32(np_float32, NumpyFloat[np_float32]):
     """float32 class for pydantic."""
