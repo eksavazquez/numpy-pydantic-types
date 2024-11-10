@@ -42,4 +42,4 @@ repos:
   hooks:
   - id: mypy # --explicit-package-bases needed because package utils already exists but no problem because this is pythonpc.utils
     args: ["--strict", "--ignore-missing-imports", "--explicit-package-bases"]
-    additional_dependencies: ["pydantic", "pydantic-settings", "types-paramiko", "pytest", "numpy"]
+    additional_dependencies: ["pydantic", "pydantic-settings", "pytest", "numpy"]
