@@ -47,8 +47,6 @@ target-version = ["py312"]
 profile = "black"
 
 [tool.ruff]
-line-length = 120
-lint.ignore-init-module-imports = true
 lint.ignore = ["F403", "F405"]
 
 [tool.pyright]

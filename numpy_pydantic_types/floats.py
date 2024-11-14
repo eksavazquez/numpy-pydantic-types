@@ -1,14 +1,14 @@
 """Floats class for pydantic."""
 
-from typing import TypeVar
+from typing import Any, TypeVar
 import pydantic
-from numpy import float32 as np_float32
+from numpy import floating
 from pydantic.json_schema import JsonSchemaValue
 from pydantic_core import CoreSchema, SchemaSerializer, core_schema
 
 from .numpy_type import NumpyType
 
-F = TypeVar("F", bound=np_float32)
+F = TypeVar("F", bound=floating[Any])
 
 
 class NumpyFloat(NumpyType[F]):
@@ -40,7 +40,9 @@ class NumpyFloat(NumpyType[F]):
         schema = core_schema.no_info_after_validator_function(
             cls.validate_numpy_type,
             core_schema.float_schema(
-                serialization=core_schema.plain_serializer_function_ser_schema(lambda x: float(str(x)))
+                serialization=core_schema.plain_serializer_function_ser_schema(
+                    lambda x: float(str(x))
+                )
             ),
         )
         cls.__pydantic_serializer__ = SchemaSerializer(schema)
@@ -50,7 +52,3 @@ class NumpyFloat(NumpyType[F]):
     def validate_numpy_type(cls: type["NumpyType[F]"], v: float) -> "NumpyType[F]":
         """Validate numpy type."""
         return cls(F(v))  # type: ignore
-
-
-class float32(np_float32, NumpyFloat[np_float32]):
-    """float32 class for pydantic."""
