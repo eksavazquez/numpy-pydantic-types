@@ -18,7 +18,7 @@ classifiers = [
 packages = [{include = "numpy_pydantic_types"}]
 
 [tool.poetry.dependencies]
-python = ">=3.10,<3.13"
+python = ">=3.9,<3.13"
 
 numpy = ">=2.0.0"
 pydantic = "^2.0"
