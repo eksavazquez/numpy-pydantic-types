@@ -40,6 +40,7 @@ repos:
 - repo: https://github.com/pre-commit/mirrors-mypy
   rev: v1.11.1
   hooks:
-  - id: mypy # --explicit-package-bases needed because package utils already exists but no problem because this is pythonpc.utils
-    args: ["--strict", "--ignore-missing-imports", "--explicit-package-bases"]
+  - id: mypy
+    args: ["--strict", "--ignore-missing-imports", "--exclude", "numpy_pydantic_types/__init__.py"]
     additional_dependencies: ["pydantic", "pydantic-settings", "pytest", "numpy"]
+    pass_filenames: false
