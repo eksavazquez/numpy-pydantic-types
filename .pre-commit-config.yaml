@@ -41,6 +41,6 @@ repos:
   rev: v1.11.1
   hooks:
   - id: mypy
-    args: ["--strict", "--ignore-missing-imports", "--exclude", "numpy_pydantic_types/__init__.py"]
+    args: ["--strict", "--ignore-missing-imports"]
     additional_dependencies: ["pydantic", "pydantic-settings", "pytest", "numpy"]
     pass_filenames: false
