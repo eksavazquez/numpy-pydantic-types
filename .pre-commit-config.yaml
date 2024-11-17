@@ -33,13 +33,14 @@ repos:
   - id: poetry-check
   - id: poetry-lock
   - id: poetry-export
-    args: ["--format", "requirements.txt", "--output", "numpy-pydantic-types/requirements.txt", "--without-hashes", "--without-urls"]
+    args: ["--format", "requirements.txt", "--output", "numpy_pydantic_types/requirements.txt", "--without-hashes", "--without-urls"]
   - id: poetry-export
-    args: ["--with", "dev", "--with", "typecheck", "--with", "format", "--format", "requirements.txt", "--output", "numpy-pydantic-types/requirements-dev.txt", "--without-hashes", "--without-urls"]
+    args: ["--with", "dev", "--with", "typecheck", "--with", "format", "--format", "requirements.txt", "--output", "numpy_pydantic_types/requirements-dev.txt", "--without-hashes", "--without-urls"]
   - id: poetry-install
 - repo: https://github.com/pre-commit/mirrors-mypy
   rev: v1.11.1
   hooks:
-  - id: mypy # --explicit-package-bases needed because package utils already exists but no problem because this is pythonpc.utils
-    args: ["--strict", "--ignore-missing-imports", "--explicit-package-bases"]
-    additional_dependencies: ["pydantic", "pydantic-settings", "types-paramiko", "pytest"]
+  - id: mypy
+    args: ["--strict", "--ignore-missing-imports"]
+    additional_dependencies: ["pydantic", "pydantic-settings", "pytest", "numpy"]
+    pass_filenames: false

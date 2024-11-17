@@ -18,7 +18,7 @@ classifiers = [
 packages = [{include = "numpy_pydantic_types"}]
 
 [tool.poetry.dependencies]
-python = ">=3.10,<3.13"
+python = ">=3.9,<3.13"
 
 numpy = ">=2.0.0"
 pydantic = "^2.0"
@@ -47,8 +47,6 @@ target-version = ["py312"]
 profile = "black"
 
 [tool.ruff]
-line-length = 120
-lint.ignore-init-module-imports = true
 lint.ignore = ["F403", "F405"]
 
 [tool.pyright]
@@ -58,6 +56,9 @@ reportUnsupportedDunderAll = false
 [tool.mypy]
 ignore_missing_imports = true
 packages = ["numpy_pydantic_types"]
+plugins = [
+  'numpy.typing.mypy_plugin',
+]
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
